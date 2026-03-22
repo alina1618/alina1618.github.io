@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Менеджер стартапів</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#">Менеджер стартапів</a>
+  <nav>
+    <ul>
+      <li><a href="#startup">Мій стартап</a></li>
+      <li><a href="#market">Ринок</a></li>
+      <li><a href="#investors">Інвестори</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<section id="startup">
+  <p class="eyebrow">Панель управління</p>
+  <h2>Мій стартап</h2>
+  <p class="desc">
+    Створення компанії, вибір сфери діяльності та керування параметрами бізнесу.
+  </p>
+
+  <div class="hero">
+    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80" alt="Офіс">
+    <div class="hero-text">
+      <h3>NovaTech</h3>
+      <p>Штучний інтелект · Львів · 2026</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Налаштування компанії</h3>
+    <div class="form-grid">
+      <div class="field">
+        <label>Назва компанії</label>
+        <input type="text" id="nameInput" value="NovaTech">
+      </div>
+      <div class="field">
+        <label>Сфера діяльності</label>
+        <select id="sectorInput">
+          <option>Штучний інтелект</option>
+          <option>FinTech</option>
+          <option>HealthTech</option>
+          <option>E-commerce</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Працівники</label>
+        <input type="number" id="staffInput" value="47">
+      </div>
+      <div class="field">
+        <label>Офіси</label>
+        <input type="number" id="staffInput" value="2">
+      </div>
+      <div class="field">
+        <label>Прибуток ($/міс)</label>
+        <input type="number" id="profitInput" value="124000">
+      </div>
+      <div class="field">
+        <label>Витрати ($/міс)</label>
+        <input type="number" id="expenseInput" value="89000">
+      </div>
+    </div>
+    <button class="btn btn-green" id="modelBtn">Зберегти та моделювати</button>
+
+    <div id="simulationResult"></div>
+  </div>
+
+  <div class="card">
+    <h3>Ринки збуту</h3>
+    <div class="tags">
+      <span class="tag on">Україна</span>
+      <span class="tag on">Німеччина</span>
+      <span class="tag on">Польща</span>
+      <span class="tag">США</span>
+      <span class="tag">Франція</span>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<section id="market">
+  <p class="eyebrow">Конкурентний аналіз</p>
+  <h2>Ринок</h2>
+  <p class="desc">
+    Аналіз конкурентів, їх фінансові показники, тренди та можливості розвитку.
+  </p>
+
+  <div class="grid-3">
+    <div class="comp-card">
+      <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=500&q=70" alt="AlphaCore Inc">
+      <div class="comp-body">
+        <span class="badge red">Висока загроза</span>
+        <h4>AlphaCore Inc.</h4>
+        <p class="sub">AI · США, ЄС</p>
+        <div class="row"><span>Розмір</span><span>Enterprise</span></div>
+        <div class="row"><span>Дохід/рік</span><span class="green">$4.2M</span></div>
+        <div class="row"><span>Зростання</span><span>+68%</span></div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&q=70" alt="BrightLoop">
+      <div class="comp-body">
+        <span class="badge yellow">Середня загроза</span>
+        <h4>BrightLoop</h4>
+        <p class="sub">AI + SaaS · Польща</p>
+        <div class="row"><span>Розмір</span><span>Mid-size</span></div>
+        <div class="row"><span>Дохід/рік</span><span class="green">$980K</span></div>
+        <div class="row"><span>Зростання</span><span>+31%</span></div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=500&q=70" alt="NexWave">
+      <div class="comp-body">
+        <span class="badge green">Низька загроза</span>
+        <h4>NexWave</h4>
+        <p class="sub">Automation · Україна</p>
+        <div class="row"><span>Розмір</span><span>Startup</span></div>
+        <div class="row"><span>Дохід/рік</span><span class="green">$210K</span></div>
+        <div class="row"><span>Зростання</span><span>+14%</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr>
+
+<section id="investors">
+  <p class="eyebrow">Фінансування</p>
+  <h2>Інвестори</h2>
+  <p class="desc">
+    Список потенційних інвесторів та обсяг їх інвестиційних портфелів.
+  </p>
+
+  <div class="grid-3">
+
+    <div class="inv-card">
+      <img src="https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=500&q=70" alt="Silicon Ventures">
+      <div class="inv-body">
+        <h4>Silicon Ventures</h4>
+        <p class="sub">AI · SaaS · DeepTech</p>
+        <div class="row"><span>Портфель</span><span class="green">$240M</span></div>
+      </div>
+    </div>
+
+    <div class="inv-card">
+      <img src="https://images.unsplash.com/photo-1467803738586-46b7eb7b16a1?w=500&q=70" alt="EuroSeed Fund">
+      <div class="inv-body">
+        <h4>EuroSeed Fund</h4>
+        <p class="sub">FinTech · GreenTech</p>
+        <div class="row"><span>Портфель</span><span class="green">$85M</span></div>
+      </div>
+    </div>
+
+    <div class="inv-card">
+      <img src="https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=500&q=70" alt="UkrTech Capital">
+      <div class="inv-body">
+        <h4>UkrTech Capital</h4>
+        <p class="sub">IT · AI</p>
+        <div class="row"><span>Портфель</span><span class="green">$32M</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>Контакти: alina.slota.oi.2022@lpnu.ua | Тел: +380 98 388 06 78</p>
+  <p>&copy; 2026 Аліна Слота, Національний університет "Львівська політехніка"</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
