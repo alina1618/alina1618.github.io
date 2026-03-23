@@ -1,0 +1,302 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f5f7fa;
+  color: #1a1a2e;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #1e293b;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #21c191;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+}
+
+nav a {
+  color: #e5e7eb;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+section {
+  margin-top: 32px;
+}
+
+hr {
+  margin: 40px 0;
+  border: none;
+  border-top: 1px solid #dce3eb;
+}
+
+.eyebrow {
+  font-size: 13px;
+  color: #10b981;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 6px 0;
+}
+
+.desc {
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.hero {
+  position: relative;
+  height: 240px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-text { 
+  position: absolute; 
+  bottom: 20px; 
+  left: 20px; 
+  z-index: 2; 
+  color: #ffffff; 
+  text-shadow: 0 0 6px rgba(0,0,0,0.8); 
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #dce3eb;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: #10b981;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field label {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: #10b981;
+}
+
+.btn-green {
+  margin-top: 16px;
+  padding: 10px 18px;
+  background: #10b981;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-green:hover {
+  background: #059669;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  padding: 6px 14px;
+  border-radius: 16px;
+  background: #eef2f5;
+  border: 1px solid #cbd5e1;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.tag:hover {
+  background: #e6f6ef;
+  border-color: #10b981;
+}
+
+.tag.on {
+  background: #dcfce7;
+  border-color: #10b981;
+  color: #047857;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.comp-card,
+.inv-card {
+  background: #fff;
+  border: 1px solid #dce3eb;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.comp-card:hover,
+.inv-card:hover {
+  border-color: #10b981;
+}
+
+.comp-card img,
+.inv-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.comp-body,
+.inv-body {
+  padding: 14px;
+}
+
+.sub {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.green {
+  color: #10b981;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+footer {
+  background: #1e293b;
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #9caabe;
+}
+
+.simulationResult{
+  margin-top: 50px;
+  padding: 20px; 
+  border-radius: 12px; 
+  display: none; 
+  border-left: 5px solid;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 900px) {
+  .grid-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero {
+    height: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    height: 170px;
+  }
+}
