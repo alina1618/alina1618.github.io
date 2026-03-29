@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "homepage": "https://alina1618.github.io/lab_5",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
