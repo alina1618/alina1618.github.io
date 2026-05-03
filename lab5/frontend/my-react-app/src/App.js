@@ -8,6 +8,7 @@ import Startup from './Startup';
 import Market from './Market';
 import Investors from './Investors';
 import AuthPage from './AuthPage'; 
+import AboutUs from './AboutUs'; // Імпортуємо нову сторінку
 
 function App() {
   const [user, setUser] = useState(null);
@@ -34,37 +35,50 @@ function App() {
   }
 
   return (
-    <Router>
-      {user && (
-        <header>
-          <Link className="logo" to="/">Менеджер стартапів</Link>
-          <nav>
-            <ul>
-              <li><Link to="/">Мій стартап</Link></li>
-              <li><Link to="/market">Ринок</Link></li>
-              <li><Link to="/investors">Інвестори</Link></li>
-              <li>
-                <button 
-                  onClick={handleLogout} 
-                  className="tag" 
-                  style={{ color: '#ef4444', border: 'none', background: 'none', cursor: 'pointer' }}
-                >
-                  Вийти
-                </button>
-              </li>
-            </ul>
-          </nav>
-        </header>
-      )}
+    <Router basename="/lab_5">
+      {/* Хедер тепер відображається завжди, але з різним меню */}
+      <header>
+        <Link className="logo" to="/">NovaTech</Link>
+        <nav>
+          <ul>
+            {!user ? (
+              <>
+                <li><Link to="/">Про нас</Link></li>
+                <li><Link to="/login">Увійти</Link></li>
+              </>
+            ) : (
+              <>
+                <li><Link to="/dashboard">Мій стартап</Link></li>
+                <li><Link to="/market">Ринок</Link></li>
+                <li><Link to="/investors">Інвестори</Link></li>
+                <li>
+                  <button 
+                    onClick={handleLogout} 
+                    className="tag" 
+                    style={{ color: '#ef4444', border: 'none', background: 'none', cursor: 'pointer', fontWeight: '500' }}
+                  >
+                    Вийти
+                  </button>
+                </li>
+              </>
+            )}
+          </ul>
+        </nav>
+      </header>
 
       <main>
-        <Routes>\
-          <Route path="/login" element={!user ? <AuthPage /> : <Navigate to="/" />} />
+        <Routes>
+          {/* Публічні маршрути */}
+          <Route path="/" element={<AboutUs />} />
+          <Route path="/login" element={!user ? <AuthPage /> : <Navigate to="/dashboard" />} />
           
-          <Route path="/" element={user ? <Startup /> : <Navigate to="/login" />} />
+          {/* Захищені маршрути (тільки для авторизованих) */}
+          <Route path="/dashboard" element={user ? <Startup /> : <Navigate to="/login" />} />
           <Route path="/market" element={user ? <Market /> : <Navigate to="/login" />} />
           <Route path="/investors" element={user ? <Investors /> : <Navigate to="/login" />} />
-          <Route path="*" element={<Navigate to={user ? "/" : "/login"} />} />
+          
+          {/* Редирект для невідомих сторінок */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
 

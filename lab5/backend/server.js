@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const admin = require("firebase-admin");
-
+const path = require("path");
 const serviceAccount = require("./serviceAccountKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -12,7 +12,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+
+app.use(express.static(path.join(__dirname, "../frontend/my-react-app/build")));
 
 app.post("/register", async (req, res) => {
   const { email, password } = req.body;
@@ -41,19 +42,13 @@ const verifyToken = async (req, res, next) => {
     return res.status(401).json({ message: "Доступ заборонено: Немає токену!" });
   }
   try {
-    req.user = { token: token, status: "authenticated" };
+    const decodedToken = await admin.auth().verifyIdToken(token);
+    req.user = decodedToken;
     next();
   } catch (error) {
     res.status(401).json({ message: "Невалідний токен" });
   }
 };
-
-app.get("/profile", verifyToken, (req, res) => {
-  res.json({ 
-    message: "Це захищений профіль користувача!", 
-    userData: req.user 
-  });
-});
 
 app.get("/api/startup", async (req, res) => {
   try {
@@ -61,7 +56,7 @@ app.get("/api/startup", async (req, res) => {
     const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     res.json(data);
   } catch (error) {
-    res.status(500).json({ error: "Помилка сервера" });
+    res.status(500).json({ error: "Помилка сервера при отриманні даних" });
   }
 });
 
@@ -82,11 +77,15 @@ app.post("/api/startup", async (req, res) => {
     });
     res.json({ message: "Стартап успішно створено!", id: docRef.id });
   } catch (error) {
-    res.status(500).json({ error: "Помилка збереження бази даних" });
+    res.status(500).json({ error: "Помилка збереження в базу даних" });
   }
 });
 
-const PORT = 5000;
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/my-react-app/build", "index.html"));
+});
+
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Сервер працює на порту ${PORT}`);
 });
